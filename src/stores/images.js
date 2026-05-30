@@ -11,6 +11,8 @@ export const scale = ref(1)
 export const rotation = ref(0)
 export const offset = ref({ x: 0, y: 0 })
 
+const zoomValue = 0.25
+
 export function addImages(files) {
     if (files.length === 0) return
 
@@ -50,11 +52,11 @@ export function next() {
 }
 
 export function zoomIn() {
-    scale.value = Math.min(scale.value + 0.5, 50)
+    scale.value = Math.min(scale.value + zoomValue, 50)
 }
 
 export function zoomOut() {
-    scale.value = Math.max(scale.value - 0.5, 0.25)
+    scale.value = Math.max(scale.value - zoomValue, 0.25)
 }
 
 export function rotateClockwise() {

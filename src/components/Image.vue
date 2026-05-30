@@ -59,7 +59,7 @@ watch(imageIndex, () => {
                 imageRendering: pixelated ? 'pixelated' : 'auto',
                 transition: dragging ? 'none' : 'all 0.2s ease',
             }"
-            class="max-h-full max-w-full object-contain select-none"
+            class="max-h-full sm:max-h-[90%] max-w-full object-contain select-none"
             draggable="false"
         >
 
