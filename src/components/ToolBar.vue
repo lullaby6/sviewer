@@ -31,7 +31,7 @@ import { imageSources, imageIndex, currentName } from '@/stores/images.js';
 <template>
     <div class="p-2 sm:p-4 bg-neutral-950 flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4 relative">
         <span class="hidden sm:block text-neutral-500 absolute left-4">
-            v0.9.2
+            v0.9.3
         </span>
 
         <span
@@ -83,7 +83,7 @@ import { imageSources, imageIndex, currentName } from '@/stores/images.js';
                 <div class="w-px h-6 bg-neutral-800 hidden sm:block" />
             </template>
 
-            <FullScreen />
+            <FullScreen v-if="!isPWA()" />
         </div>
 
         <a href="http://github.com/lullaby6/sviewer" target="_blank" class="hidden sm:block text-neutral-500 absolute right-4 hover:opacity-50 transition-opacity">
