@@ -22,7 +22,7 @@ import RotateCounterClockwise from '@/components/tools/rotate/CounterClockwise.v
 import Reset from '@/components/tools/Reset.vue';
 import FullScreen from '@/components/tools/FullScreen.vue';
 
-import { isPWAInstalled } from '@/utils/utils.js';
+import { isPWAInstalled, isPWA } from '@/utils/utils.js';
 
 import { imageSources, imageIndex, currentName } from '@/stores/images.js';
 
@@ -31,7 +31,7 @@ import { imageSources, imageIndex, currentName } from '@/stores/images.js';
 <template>
     <div class="p-2 sm:p-4 bg-neutral-950 flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4 relative">
         <span class="hidden sm:block text-neutral-500 absolute left-4">
-            v0.9.0
+            v0.9.1
         </span>
 
         <span
@@ -44,7 +44,7 @@ import { imageSources, imageIndex, currentName } from '@/stores/images.js';
         <!-- Mobile: row 1 / Desktop: left side -->
         <div class="flex items-center justify-center gap-2 sm:gap-4 flex-wrap">
             <Input />
-            <Download v-if="!isPWAInstalled()" />
+            <Download v-if="!isPWAInstalled() && !isPWA()" />
             <Link />
             <Clipboard />
 
