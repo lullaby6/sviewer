@@ -2,6 +2,8 @@
 
 import { IconBrandGithub } from '@tabler/icons-vue';
 
+import ScrollRow from '@/components/ScrollRow.vue';
+
 import Input from '@/components/tools/Input.vue';
 import Download from '@/components/tools/Download.vue';
 import Link from '@/components/tools/Link.vue';
@@ -29,9 +31,9 @@ import { imageSources, imageIndex, currentName } from '@/stores/images.js';
 </script>
 
 <template>
-    <div class="p-2 sm:p-4 bg-neutral-950 flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4 relative">
+    <div class="p-2 sm:p-4 bg-neutral-950 flex justify-between sm:justify-center items-center relative">
         <span class="hidden sm:block text-neutral-500 absolute left-4">
-            v0.9.4
+            v0.9.5
         </span>
 
         <span
@@ -41,8 +43,7 @@ import { imageSources, imageIndex, currentName } from '@/stores/images.js';
             {{ currentName }}
         </span>
 
-        <!-- Mobile: row 1 / Desktop: left side -->
-        <div class="flex items-center justify-center gap-2 sm:gap-4 flex-wrap">
+        <ScrollRow :max-visible="7">
             <Input />
             <Download v-if="!isPWAInstalled() && !isPWA()" />
             <Link />
@@ -54,10 +55,6 @@ import { imageSources, imageIndex, currentName } from '@/stores/images.js';
 
                 <div class="w-px h-6 bg-neutral-800 hidden sm:block" />
 
-                <!-- <template v-if="imageSources.length > 1">
-                    <Prev v-if="imageIndex > 0" />
-                    <Next v-if="imageIndex < imageSources.length - 1" />
-                </template> -->
                 <Prev :disabled="imageIndex === 0" />
                 <Next :disabled="imageIndex === imageSources.length - 1" />
 
@@ -65,12 +62,7 @@ import { imageSources, imageIndex, currentName } from '@/stores/images.js';
 
                 <ZoomOut />
                 <ZoomIn />
-            </template>
-        </div>
 
-        <!-- Mobile: row 2 / Desktop: right side -->
-        <div class="flex items-center justify-center gap-2 sm:gap-4 flex-wrap">
-            <template v-if="imageSources.length > 0">
                 <RotateCounterClockwise />
                 <RotateClockwise />
                 <PixelArt />
@@ -84,7 +76,7 @@ import { imageSources, imageIndex, currentName } from '@/stores/images.js';
             </template>
 
             <FullScreen v-if="!isPWA()" />
-        </div>
+        </ScrollRow>
 
         <a href="http://github.com/lullaby6/sviewer" target="_blank" class="hidden sm:block text-neutral-500 absolute right-4 hover:opacity-50 transition-opacity">
             <IconBrandGithub stroke={2} class="w-6" />
