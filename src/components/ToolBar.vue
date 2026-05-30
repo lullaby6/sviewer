@@ -2,20 +2,27 @@
 
 import { IconBrandGithub } from '@tabler/icons-vue';
 
-import FullScreen from '@/components/tools/FullScreen.vue';
 import Input from '@/components/tools/Input.vue';
+import Download from '@/components/tools/Download.vue';
 import Link from '@/components/tools/Link.vue';
 import Clipboard from '@/components/tools/Clipboard.vue';
+import ImageDownload from '@/components/tools/ImageDownload.vue';
 import Clear from '@/components/tools/Clear.vue';
+
 import Prev from '@/components/tools/Prev.vue';
 import Next from '@/components/tools/Next.vue';
+
 import Copy from '@/components/tools/Copy.vue';
 import PixelArt from '@/components/tools/PixelArt.vue';
 import ZoomIn from '@/components/tools/zoom/Increment.vue';
 import ZoomOut from '@/components/tools/zoom/Decrement.vue';
 import RotateClockwise from '@/components/tools/rotate/Clockwise.vue';
 import RotateCounterClockwise from '@/components/tools/rotate/CounterClockwise.vue';
+
 import Reset from '@/components/tools/Reset.vue';
+import FullScreen from '@/components/tools/FullScreen.vue';
+
+import { isPWAInstalled } from '@/utils/utils.js';
 
 import { imageSources, imageIndex } from '@/stores/images.js';
 
@@ -26,10 +33,12 @@ import { imageSources, imageIndex } from '@/stores/images.js';
         <!-- Mobile: row 1 / Desktop: left side -->
         <div class="flex items-center justify-center gap-2 sm:gap-4 flex-wrap">
             <Input />
+            <Download v-if="!isPWAInstalled()" />
             <Link />
             <Clipboard />
 
             <template v-if="imageSources.length > 0">
+                <ImageDownload />
                 <Clear />
 
                 <div class="w-px h-6 bg-neutral-800 hidden sm:block" />
