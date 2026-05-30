@@ -70,6 +70,6 @@ watch(imageIndex, () => {
             draggable="false"
         >
 
-        <span v-else class="text-neutral-500">No image</span>
+        <span v-else class="text-neutral-500">No images</span>
     </div>
 </template>
