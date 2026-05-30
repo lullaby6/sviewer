@@ -1,3 +1,5 @@
+import '@/pwa'
+
 import { createApp } from 'vue'
 
 import FloatingVue from 'floating-vue'
