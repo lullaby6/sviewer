@@ -1,6 +1,6 @@
 # Sviewer
 
-Image viewer built with Vue3 and Tailwind CSS.
+Image Viewer built with Vue3 and Tailwind CSS.
 
 [Go to Sviewer](https://sviewer.vercel.app/)
 
