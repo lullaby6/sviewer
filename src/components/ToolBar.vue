@@ -24,12 +24,23 @@ import FullScreen from '@/components/tools/FullScreen.vue';
 
 import { isPWAInstalled } from '@/utils/utils.js';
 
-import { imageSources, imageIndex } from '@/stores/images.js';
+import { imageSources, imageIndex, currentName } from '@/stores/images.js';
 
 </script>
 
 <template>
     <div class="p-2 sm:p-4 bg-neutral-950 flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4 relative">
+        <span class="hidden sm:block text-neutral-500 absolute left-4">
+            v0.9.0
+        </span>
+
+        <span
+            v-if="currentName"
+            class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 max-w-[80vw] truncate px-3 py-1 rounded bg-neutral-900/80 text-neutral-300 text-sm pointer-events-none"
+        >
+            {{ currentName }}
+        </span>
+
         <!-- Mobile: row 1 / Desktop: left side -->
         <div class="flex items-center justify-center gap-2 sm:gap-4 flex-wrap">
             <Input />

@@ -1,7 +1,10 @@
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 export const imageSources = ref([])
+export const imageNames = ref([])
 export const imageIndex = ref(0)
+
+export const currentName = computed(() => imageNames.value[imageIndex.value] ?? '')
 export const imageRef = ref(null)
 export const pixelated = ref(false)
 export const scale = ref(1)
@@ -14,6 +17,7 @@ export function addImages(files) {
     const index = imageSources.value.length
     for (const file of files) {
         imageSources.value.push(URL.createObjectURL(file))
+        imageNames.value.push(file.name || 'pasted-image')
     }
     imageIndex.value = index
 }
@@ -21,7 +25,18 @@ export function addImages(files) {
 export function addImageURL(url) {
     const index = imageSources.value.length
     imageSources.value.push(url)
+    imageNames.value.push(getNameFromURL(url))
     imageIndex.value = index
+}
+
+function getNameFromURL(url) {
+    try {
+        const pathname = new URL(url).pathname
+        const name = decodeURIComponent(pathname.split('/').pop())
+        return name || url
+    } catch {
+        return url
+    }
 }
 
 export function prev() {
@@ -59,5 +74,6 @@ export function reset() {
 
 export function clear() {
     imageSources.value = []
+    imageNames.value = []
     imageIndex.value = 0
 }
