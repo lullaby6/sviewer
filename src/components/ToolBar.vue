@@ -4,6 +4,9 @@ import { IconBrandGithub } from '@tabler/icons-vue';
 
 import FullScreen from '@/components/tools/FullScreen.vue';
 import Input from '@/components/tools/Input.vue';
+import Link from '@/components/tools/Link.vue';
+import Clipboard from '@/components/tools/Clipboard.vue';
+import Clear from '@/components/tools/Clear.vue';
 import Prev from '@/components/tools/Prev.vue';
 import Next from '@/components/tools/Next.vue';
 import Copy from '@/components/tools/Copy.vue';
@@ -23,8 +26,12 @@ import { imageSources, imageIndex } from '@/stores/images.js';
         <!-- Mobile: row 1 / Desktop: left side -->
         <div class="flex items-center justify-center gap-2 sm:gap-4 flex-wrap">
             <Input />
+            <Link />
+            <Clipboard />
 
             <template v-if="imageSources.length > 0">
+                <Clear />
+
                 <div class="w-px h-6 bg-neutral-800 hidden sm:block" />
 
                 <!-- <template v-if="imageSources.length > 1">

@@ -11,11 +11,17 @@ export const offset = ref({ x: 0, y: 0 })
 export function addImages(files) {
     if (files.length === 0) return
 
-    const firstNewIndex = imageSources.value.length
+    const index = imageSources.value.length
     for (const file of files) {
         imageSources.value.push(URL.createObjectURL(file))
     }
-    imageIndex.value = firstNewIndex
+    imageIndex.value = index
+}
+
+export function addImageURL(url) {
+    const index = imageSources.value.length
+    imageSources.value.push(url)
+    imageIndex.value = index
 }
 
 export function prev() {
@@ -49,4 +55,9 @@ export function reset() {
     rotation.value = 0
     offset.value = { x: 0, y: 0 }
     pixelated.value = false
+}
+
+export function clear() {
+    imageSources.value = []
+    imageIndex.value = 0
 }
