@@ -12,7 +12,7 @@ const { start, stop } = useHold(zoomOut);
 </script>
 
 <template>
-    <Button @mousedown="start" @mouseup="stop" @mouseleave="stop">
+    <Button @mousedown="start" @mouseup="stop" @mouseleave="stop" v-tooltip="'Zoom Out'">
         <IconZoomOut stroke={2} class="w-6" />
     </Button>
 </template>

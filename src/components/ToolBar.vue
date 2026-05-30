@@ -19,38 +19,47 @@ import { imageSources, imageIndex } from '@/stores/images.js';
 </script>
 
 <template>
-    <div class="py-4 bg-neutral-950 flex justify-center items-center gap-4 relative">
-        <Input />
+    <div class="p-2 sm:p-4 bg-neutral-950 flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4 relative">
+        <!-- Mobile: row 1 / Desktop: left side -->
+        <div class="flex items-center justify-center gap-2 sm:gap-4 flex-wrap">
+            <Input />
 
-        <template v-if="imageSources.length > 0">
-            <div class="w-px h-6 bg-neutral-800" />
+            <template v-if="imageSources.length > 0">
+                <div class="w-px h-6 bg-neutral-800 hidden sm:block" />
 
-            <!-- <template v-if="imageSources.length > 1">
-                <Prev v-if="imageIndex > 0" />
-                <Next v-if="imageIndex < imageSources.length - 1" />
-            </template> -->
-            <Prev :disabled="imageIndex === 0" />
-            <Next :disabled="imageIndex === imageSources.length - 1" />
+                <!-- <template v-if="imageSources.length > 1">
+                    <Prev v-if="imageIndex > 0" />
+                    <Next v-if="imageIndex < imageSources.length - 1" />
+                </template> -->
+                <Prev :disabled="imageIndex === 0" />
+                <Next :disabled="imageIndex === imageSources.length - 1" />
 
-            <div class="w-px h-6 bg-neutral-800" />
+                <div class="w-px h-6 bg-neutral-800 hidden sm:block" />
 
-            <ZoomOut />
-            <ZoomIn />
-            <RotateCounterClockwise />
-            <RotateClockwise />
-            <PixelArt />
+                <ZoomOut />
+                <ZoomIn />
+            </template>
+        </div>
 
-            <div class="w-px h-6 bg-neutral-800" />
+        <!-- Mobile: row 2 / Desktop: right side -->
+        <div class="flex items-center justify-center gap-2 sm:gap-4 flex-wrap">
+            <template v-if="imageSources.length > 0">
+                <RotateCounterClockwise />
+                <RotateClockwise />
+                <PixelArt />
 
-            <Reset />
-            <Copy />
+                <div class="w-px h-6 bg-neutral-800 hidden sm:block" />
 
-            <div class="w-px h-6 bg-neutral-800" />
-        </template>
+                <Reset />
+                <Copy />
 
-        <FullScreen />
+                <div class="w-px h-6 bg-neutral-800 hidden sm:block" />
+            </template>
 
-        <a href="http://github.com/lullaby6/sviewer" target="_blank" class="text-neutral-500 absolute right-4 hover:opacity-50 transition-opacity">
+            <FullScreen />
+        </div>
+
+        <a href="http://github.com/lullaby6/sviewer" target="_blank" class="hidden sm:block text-neutral-500 absolute right-4 hover:opacity-50 transition-opacity">
             <IconBrandGithub stroke={2} class="w-6" />
         </a>
     </div>

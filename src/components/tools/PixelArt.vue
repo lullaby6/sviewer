@@ -12,7 +12,7 @@ function togglePixelArt() {
 </script>
 
 <template>
-    <Button @click="togglePixelArt">
+    <Button @click="togglePixelArt" v-tooltip="(pixelated ? 'Disable' : 'Enable') + ' Pixel Art'">
         <IconBox v-if="pixelated" stroke={2} class="w-6" />
         <IconCube v-else stroke={2} class="w-6" />
     </Button>

@@ -41,7 +41,7 @@ function copyImageToClipboard() {
 </script>
 
 <template>
-    <Button @click="copyImageToClipboard" :disabled="copying">
+    <Button @click="copyImageToClipboard" :disabled="copying" v-tooltip="copying ? 'Copying...' : 'Copy'">
         <IconCopy stroke={2} class="w-6" />
     </Button>
 </template>

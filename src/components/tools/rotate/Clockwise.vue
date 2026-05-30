@@ -8,7 +8,7 @@ import { rotateClockwise } from '@/stores/images.js';
 </script>
 
 <template>
-    <Button @click="rotateClockwise">
+    <Button @click="rotateClockwise" v-tooltip="'Rotate Clockwise'">
         <IconRotateClockwise stroke={2} class="w-6" />
     </Button>
 </template>

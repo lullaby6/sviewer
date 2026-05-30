@@ -25,7 +25,7 @@ function toggleFullScreen() {
 </script>
 
 <template>
-    <Button @click="toggleFullScreen">
+    <Button @click="toggleFullScreen" v-tooltip="isFullScreen ? 'Exit Fullscreen' : 'Enter Fullscreen'">
         <IconMinimize v-if="isFullScreen" stroke={2} class="w-6" />
         <IconMaximize v-else stroke={2} class="w-6" />
     </Button>

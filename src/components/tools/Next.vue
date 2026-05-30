@@ -8,7 +8,7 @@ import { next } from '@/stores/images.js';
 </script>
 
 <template>
-    <Button @click="next">
+    <Button @click="next" v-tooltip="'Next'">
         <IconChevronRight stroke={2} class="w-6" />
     </Button>
 </template>

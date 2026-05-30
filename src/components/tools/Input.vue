@@ -3,6 +3,9 @@
 import { IconPhoto } from '@tabler/icons-vue';
 import { useToast } from 'vue-toastification';
 
+import { imageSources } from '@/stores/images.js';
+
+
 import Button from '@/components/Button.vue';
 import { addImages } from '@/stores/images.js';
 
@@ -36,7 +39,7 @@ function inputImages() {
 </script>
 
 <template>
-    <Button @click="inputImages">
+    <Button @click="inputImages" v-tooltip="'Open Images'">
         <IconPhoto stroke={2} class="w-6" />
     </Button>
 </template>

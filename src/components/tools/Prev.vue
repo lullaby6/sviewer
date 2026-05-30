@@ -8,7 +8,7 @@ import { prev } from '@/stores/images.js';
 </script>
 
 <template>
-    <Button @click="prev">
+    <Button @click="prev" v-tooltip="'Previous'">
         <IconChevronLeft stroke={2} class="w-6" />
     </Button>
 </template>

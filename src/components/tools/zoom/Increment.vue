@@ -12,7 +12,7 @@ const { start, stop } = useHold(zoomIn);
 </script>
 
 <template>
-    <Button @mousedown="start" @mouseup="stop" @mouseleave="stop">
+    <Button @mousedown="start" @mouseup="stop" @mouseleave="stop" v-tooltip="'Zoom In'">
         <IconZoomIn stroke={2} class="w-6" />
     </Button>
 </template>
