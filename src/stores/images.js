@@ -1,5 +1,7 @@
 import { ref, computed } from 'vue'
 
+import { useToast } from 'vue-toastification'
+
 export const imageSources = ref([])
 export const imageNames = ref([])
 export const imageIndex = ref(0)
@@ -78,4 +80,70 @@ export function clear() {
     imageSources.value = []
     imageNames.value = []
     imageIndex.value = 0
+}
+
+export function openImages() {
+    const toast = useToast()
+
+    const input = document.createElement('input')
+    input.type = 'file'
+    input.accept = 'image/*'
+    input.multiple = true
+    input.addEventListener('change', () => {
+        const files = Array.from(input.files)
+        const images = files.filter(file => file.type.startsWith('image/'))
+
+        if (images.length === 0) {
+            toast.error('No valid images selected')
+            return
+        }
+
+        addImages(images)
+
+        toast.success(`${images.length} image${images.length > 1 ? 's' : ''} loaded`)
+
+        if (images.length < files.length) {
+            toast.warning('Some files were skipped because they are not images')
+        }
+    })
+    input.click()
+}
+
+export function togglePixelArt() {
+    pixelated.value = !pixelated.value
+}
+
+export function toggleFullScreen() {
+    if (document.fullscreenElement) {
+        document.exitFullscreen()
+    } else {
+        document.documentElement.requestFullscreen()
+    }
+}
+
+export async function downloadImage() {
+    const toast = useToast()
+
+    const src = imageSources.value[imageIndex.value]
+    if (!src) return
+
+    try {
+        const blob = await (await fetch(src)).blob()
+        const extension = (blob.type.split('/')[1] || 'png').replace('+xml', '')
+        const url = URL.createObjectURL(blob)
+
+        const name = imageNames.value[imageIndex.value] || `image-${imageIndex.value + 1}`
+        const filename = name.includes('.') ? name : `${name}.${extension}`
+
+        const link = document.createElement('a')
+        link.href = url
+        link.download = filename
+        link.click()
+
+        URL.revokeObjectURL(url)
+        toast.success('Image downloaded')
+    } catch (error) {
+        console.error('Error downloading image:', error)
+        toast.error('Error downloading image')
+    }
 }

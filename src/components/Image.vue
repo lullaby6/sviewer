@@ -1,7 +1,7 @@
 <script setup>
 import { ref, watch } from 'vue'
 
-import { imageSources, imageIndex, imageRef, pixelated, scale, rotation, offset } from '@/stores/images.js';
+import { imageSources, imageIndex, imageRef, pixelated, scale, rotation, offset, zoomIn, zoomOut } from '@/stores/images.js';
 
 const dragging = ref(false)
 
@@ -34,6 +34,13 @@ function dragEnd() {
     window.removeEventListener('mouseup', dragEnd)
 }
 
+function onWheel(event) {
+    if (imageSources.value.length === 0) return
+
+    if (event.deltaY < 0) zoomIn()
+    else zoomOut()
+}
+
 function setImageRef(el) {
     imageRef.value = el
 }
@@ -47,7 +54,7 @@ watch(imageIndex, () => {
 </script>
 
 <template>
-    <div class="h-full bg-neutral-900 flex items-center justify-center overflow-hidden">
+    <div class="h-full bg-neutral-900 flex items-center justify-center overflow-hidden" @wheel.prevent="onWheel">
         <img
             :ref="setImageRef"
             v-if="imageSources.length > 0"

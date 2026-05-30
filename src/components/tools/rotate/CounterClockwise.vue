@@ -4,11 +4,12 @@ import { IconRotate } from '@tabler/icons-vue';
 
 import Button from '@/components/Button.vue';
 import { rotateCounterClockwise } from '@/stores/images.js';
+import { tooltip } from '@/shortcuts.js';
 
 </script>
 
 <template>
-    <Button @click="rotateCounterClockwise" v-tooltip="'Rotate Counter Clockwise'">
+    <Button @click="rotateCounterClockwise" v-tooltip="tooltip('rotateCounterClockwise')">
         <IconRotate stroke={2} class="w-6" />
     </Button>
 </template>

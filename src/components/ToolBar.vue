@@ -33,7 +33,7 @@ import { imageSources, imageIndex, currentName } from '@/stores/images.js';
 <template>
     <div class="p-2 sm:p-4 bg-neutral-950 flex justify-between sm:justify-center items-center relative">
         <span class="hidden sm:block text-neutral-500 absolute left-4">
-            v0.9.5
+            v1.0.0
         </span>
 
         <span

@@ -3,6 +3,10 @@
 import Image from '@/components/Image.vue';
 import ToolBar from '@/components/ToolBar.vue';
 
+import { useHotkeys } from '@/composables/useHotkeys.js';
+
+useHotkeys();
+
 </script>
 
 <template>
