@@ -16,3 +16,5 @@ Image Viewer built with Vue3 and Tailwind CSS.
 - Donwload Image
 - Open Image from Clipboard
 - Open Image from URL
+- Draggeable Image
+- Hotkeys
