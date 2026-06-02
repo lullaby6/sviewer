@@ -1,0 +1,1 @@
+{"name":"Sviewer","short_name":"Sviewer","description":"Image Viewer built with Vue3 and Tailwind CSS.","start_url":"/","display":"fullscreen","background_color":"#171717","theme_color":"#171717","lang":"en","scope":"/","id":"/","icons":[{"src":"pwa-192x192.png","sizes":"192x192","type":"image/png"},{"src":"pwa-512x512.png","sizes":"512x512","type":"image/png"}]}
