@@ -28,7 +28,7 @@ import { isPWAInstalled, isPWA } from '@/utils/utils.js';
 
 import { imageSources, imageIndex, currentName } from '@/stores/images.js';
 
-import VERSION from '@/data/version.js';
+import { VERSION } from '@/data/version.js';
 
 </script>
 
