@@ -2,7 +2,7 @@
 
 Image Viewer built with Vue3 and Tailwind CSS.
 
-[Go to Sviewer](https://sviewer.vercel.app/)
+[Go to Sviewer](https://lullaby6.github.io/sviewer/)
 
 ## Features
 
