@@ -28,12 +28,14 @@ import { isPWAInstalled, isPWA } from '@/utils/utils.js';
 
 import { imageSources, imageIndex, currentName } from '@/stores/images.js';
 
+import VERSION from '@/data/version.js';
+
 </script>
 
 <template>
     <div class="p-2 sm:p-4 bg-neutral-950 flex justify-between sm:justify-center items-center relative">
         <span class="hidden sm:block text-neutral-500 absolute left-4">
-            v1.0.2
+            {{ VERSION }}
         </span>
 
         <span
